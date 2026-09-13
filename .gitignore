@@ -2,7 +2,9 @@
 !arcane/.env
 !nginx-proxy-manager/.env
 !tailscale/.env
+!heimdall/.env
 nginx-proxy-manager/data/
 nginx-proxy-manager/letsencrypt/
 arcane/data/
 tailscale/state/
+heimdall/config/

@@ -24,7 +24,8 @@ mkdir -p \
   "$ROOT_DIR/nginx-proxy-manager/data" \
   "$ROOT_DIR/nginx-proxy-manager/letsencrypt" \
   "$ROOT_DIR/arcane/data" \
-  "$ROOT_DIR/tailscale/state"
+  "$ROOT_DIR/tailscale/state" \
+  "$ROOT_DIR/heimdall/config"
 
 if ! docker network inspect proxy >/dev/null 2>&1; then
   echo "Creando red externa proxy..."
@@ -42,5 +43,6 @@ run_stack() {
 run_stack "nginx-proxy-manager"
 run_stack "arcane"
 run_stack "tailscale"
+run_stack "heimdall"
 
 echo "Infra arrancada correctamente."

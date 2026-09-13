@@ -16,6 +16,7 @@ stop_stack() {
   docker compose --env-file "$ENV_FILE" -f "$ROOT_DIR/$stack_dir/compose.yaml" down
 }
 
+stop_stack "heimdall"
 stop_stack "tailscale"
 stop_stack "arcane"
 stop_stack "nginx-proxy-manager"
