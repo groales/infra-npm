@@ -16,7 +16,6 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - ENCRYPTION_KEY=${ENCRYPTION_KEY}
-      - JWT_SECRET=${JWT_SECRET}
 
 networks:
   default:
