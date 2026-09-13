@@ -10,7 +10,7 @@ services:
     volumes:
       - ./config:/config
     ports:
-      - 8080:80
+      - 8000:80
 
 networks:
   default:
