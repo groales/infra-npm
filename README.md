@@ -1,21 +1,21 @@
-# infra
+# infra-npm
 
 Infraestructura Docker para publicacion, gestion y acceso remoto:
 
-- Cloudflared (tunel Cloudflare)
+- Nginx Proxy Manager (publicacion y certificados)
 - Arcane (gestion de proyectos/servicios Docker)
 - Tailscale (acceso remoto)
 
 ## Estructura
 
 ```text
-infra/
+infra-npm/
 ├── .env.example
 ├── .gitignore
 ├── README.md
 ├── start.sh
 ├── stop.sh
-├── cloudflared/
+├── nginx-proxy-manager/
 │   ├── compose.yaml
 │   └── .env -> ../.env
 ├── arcane/
@@ -31,7 +31,6 @@ infra/
 1. Copiar variables:
    - cp .env.example .env
 2. Completar secretos en .env:
-   - CLOUDFLARE_TOKEN
    - ENCRYPTION_KEY
    - JWT_SECRET
    - TS_AUTHKEY
@@ -60,7 +59,7 @@ Esto escribe valores reales en el archivo `.env`. Si reinicias, siguen ahi hasta
 
 Tambien puedes arrancar cada stack desde su carpeta sin parametros extra:
 
-- cd cloudflared && docker compose up -d
+- cd nginx-proxy-manager && docker compose up -d
 - cd arcane && docker compose up -d
 - cd tailscale && docker compose up -d
 
@@ -76,4 +75,5 @@ Desde cada carpeta:
 
 - Arcane monta PROJECTS_DIRECTORY del host y usa esa misma ruta dentro del contenedor.
 - Se crea automaticamente la red Docker externa proxy si no existe.
+- Nginx Proxy Manager expone 80/81/443 para trafico HTTP/HTTPS y panel de administracion.
 - El stack de Tailscale en este compose esta orientado a host Linux (network_mode host y /dev/net/tun).

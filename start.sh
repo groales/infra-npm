@@ -20,7 +20,11 @@ if [[ -z "${PROJECTS_DIRECTORY:-}" ]]; then
   exit 1
 fi
 
-mkdir -p "$ROOT_DIR/arcane/data" "$ROOT_DIR/tailscale/state"
+mkdir -p \
+  "$ROOT_DIR/nginx-proxy-manager/data" \
+  "$ROOT_DIR/nginx-proxy-manager/letsencrypt" \
+  "$ROOT_DIR/arcane/data" \
+  "$ROOT_DIR/tailscale/state"
 
 if ! docker network inspect proxy >/dev/null 2>&1; then
   echo "Creando red externa proxy..."
@@ -35,7 +39,7 @@ run_stack() {
   docker compose --env-file "$ENV_FILE" -f "$ROOT_DIR/$stack_dir/compose.yaml" up -d
 }
 
-run_stack "cloudflared"
+run_stack "nginx-proxy-manager"
 run_stack "arcane"
 run_stack "tailscale"
 

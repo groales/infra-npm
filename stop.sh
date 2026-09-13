@@ -18,6 +18,6 @@ stop_stack() {
 
 stop_stack "tailscale"
 stop_stack "arcane"
-stop_stack "cloudflared"
+stop_stack "nginx-proxy-manager"
 
 echo "Infra detenida correctamente."

@@ -1,6 +1,8 @@
 .env
 !arcane/.env
-!cloudflared/.env
+!nginx-proxy-manager/.env
 !tailscale/.env
+nginx-proxy-manager/data/
+nginx-proxy-manager/letsencrypt/
 arcane/data/
 tailscale/state/
